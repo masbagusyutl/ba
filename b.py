@@ -1,6 +1,5 @@
 import requests
 import time
-import json
 from datetime import datetime, timedelta
 
 # Load account IDs from data.txt
@@ -9,19 +8,6 @@ with open('data.txt', 'r') as file:
 
 accounts = [account.strip() for account in accounts]
 num_accounts = len(accounts)
-
-# Function to get username from Telegram UID
-def get_username(telegram_uid):
-    try:
-        response = requests.get(f'https://api.telegram.org/bot<your-bot-token>/getChat?chat_id={telegram_uid}')
-        response_data = response.json()
-        if response_data['ok']:
-            return response_data['result']['username']
-        else:
-            return None
-    except Exception as e:
-        print(f"Error fetching username for {telegram_uid}: {e}")
-        return None
 
 # Function to claim reward for a given account
 def claim_reward(telegram_uid):
@@ -61,14 +47,12 @@ def countdown_timer(hours, message):
 # Main function to process all accounts
 def main():
     for i, account_id in enumerate(accounts):
-        username = get_username(account_id)
-        account_name = username if username else account_id
-        print(f"Processing account {i + 1}/{num_accounts}: {account_name} (Username: {username if username else 'N/A'})")
+        print(f"Processing account {i + 1}/{num_accounts}: {account_id}")
         
         if claim_reward(account_id):
-            print(f"Claim successful for account: {account_name}")
+            print(f"Claim successful for account: {account_id}")
         else:
-            print(f"Claim failed for account: {account_name}")
+            print(f"Claim failed for account: {account_id}")
         
         time.sleep(5)
     
