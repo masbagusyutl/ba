@@ -63,7 +63,7 @@ def main():
     for i, account_id in enumerate(accounts):
         username = get_username(account_id)
         account_name = username if username else account_id
-        print(f"Processing account {i + 1}/{num_accounts}: {account_name}")
+        print(f"Processing account {i + 1}/{num_accounts}: {account_name} (Username: {username if username else 'N/A'})")
         
         if claim_reward(account_id):
             print(f"Claim successful for account: {account_name}")
