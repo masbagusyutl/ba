@@ -27,10 +27,6 @@ def get_username(telegram_uid):
 def claim_reward(telegram_uid):
     url = 'https://greedyball-api.artemislab.co/api/v1/claim'
     headers = {
-        ':authority': 'greedyball-api.artemislab.co',
-        ':method': 'POST',
-        ':path': '/api/v1/claim',
-        ':scheme': 'https',
         'Accept': 'application/json, text/plain, */*',
         'Accept-Encoding': 'gzip, deflate, br, zstd',
         'Accept-Language': 'en-GB,en;q=0.9,en-US;q=0.8',
@@ -39,7 +35,6 @@ def claim_reward(telegram_uid):
         'Content-Type': 'application/json',
         'Origin': 'https://greedyball.artemislab.co',
         'Pragma': 'no-cache',
-        'Priority': 'u=1, i',
         'Referer': 'https://greedyball.artemislab.co/',
         'Sec-Ch-Ua': '"Not/A)Brand";v="8", "Chromium";v="126", "Microsoft Edge";v="126", "Microsoft Edge WebView2";v="126"',
         'Sec-Ch-Ua-Mobile': '?0',
